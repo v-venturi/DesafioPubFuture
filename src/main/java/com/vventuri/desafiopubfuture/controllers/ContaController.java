@@ -19,30 +19,42 @@ public class ContaController {
     private final ContaService contaService;
 
     @GetMapping
-    public ResponseEntity<List<Conta>> contas(){
+    public ResponseEntity<List<Conta>> contas() {
         return ResponseEntity.ok(contaService.listarTodas());
 
     }
+
     @GetMapping(path = "/{conta}")
-    public ResponseEntity<Conta> listarPorConta(@PathVariable Integer conta){
+    public ResponseEntity<Conta> listarPorConta(@PathVariable Integer conta) {
         return ResponseEntity.ok(contaService.procurarConta(conta));
     }
+
     @PostMapping
-    public ResponseEntity<Conta> cadastrar (@RequestBody Conta conta){
+    public ResponseEntity<Conta> cadastrar(@RequestBody Conta conta) {
         return new ResponseEntity<>(contaService.cadatrarConta(conta), HttpStatus.CREATED);
     }
+
     @PutMapping(path = "/{conta}")
-    public ResponseEntity<Void> editar(@RequestBody Conta conta){
+    public ResponseEntity<Void> editar(@RequestBody Conta conta) {
         contaService.editarConta(conta);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
+
     @DeleteMapping(path = "/{conta}")
-    public ResponseEntity<Void> deletar (@PathVariable int conta){
+    public ResponseEntity<Void> deletar(@PathVariable int conta) {
         contaService.removerConta(conta);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PutMapping(path = "/{contaOrigem}/{contaDestino}/{valorTransferido}")
+    public ResponseEntity<Void> transferirSaldo(@PathVariable(value = "contaOrigem") Conta contaOrigem,
+                                                @PathVariable(value = "contaDestino") Conta contaDestino,
+                                                @PathVariable(value = "valorTransferido") Double valorTransferido) {
+        contaService.sacar(contaOrigem.getConta(), valorTransferido);
+        contaService.depositar(contaDestino.getConta(), valorTransferido);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 }

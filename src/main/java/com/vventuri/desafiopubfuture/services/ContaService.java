@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContaService {
     private final ContaRepository contaRepository;
+    double valorTransferido;
 
     public List<Conta> listarTodas(){
         return contaRepository.findAll();
@@ -33,4 +34,17 @@ public class ContaService {
     public void removerConta(int conta){
         contaRepository.delete(procurarConta(conta));
     }
+
+    public void sacar(int conta, double valorTransferido){
+        Conta conta1 = procurarConta(conta);
+        conta1.setSaldo(conta1.getSaldo() - valorTransferido);
+        contaRepository.save(conta1);
+    }
+    public void depositar(int conta, double valorTransferido){
+        Conta conta2 = procurarConta(conta);
+        conta2.setSaldo(conta2.getSaldo() + valorTransferido);
+        contaRepository.save(conta2);
+    }
+
+
 }
