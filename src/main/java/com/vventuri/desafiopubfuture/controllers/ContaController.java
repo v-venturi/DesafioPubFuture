@@ -34,20 +34,20 @@ public class ContaController {
         return new ResponseEntity<>(contaService.cadatrarConta(conta), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/{conta}")
+    @PutMapping(path = "editar/{conta}")
     public ResponseEntity<Void> editar(@RequestBody Conta conta) {
         contaService.editarConta(conta);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
-    @DeleteMapping(path = "/{conta}")
+    @DeleteMapping(path = "deletar/{conta}")
     public ResponseEntity<Void> deletar(@PathVariable int conta) {
         contaService.removerConta(conta);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(path = "/{contaOrigem}/{contaDestino}/{valorTransferido}")
+    @PutMapping(path = "transferir/{contaOrigem}/{contaDestino}/{valorTransferido}")
     public ResponseEntity<Void> transferirSaldo(@PathVariable(value = "contaOrigem") Conta contaOrigem,
                                                 @PathVariable(value = "contaDestino") Conta contaDestino,
                                                 @PathVariable(value = "valorTransferido") Double valorTransferido) {

@@ -15,12 +15,15 @@ import java.time.LocalDateTime;
 @Entity
 @Builder
 public class Despesas {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int despesaId;
     private double valor;
     private LocalDateTime dataPagamento;
     private LocalDateTime dataPagamentoEsperado;
     @Enumerated(EnumType.STRING)
     private TipoDespesa tipoDespesa;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int conta;
+    @ManyToOne
+    @JoinColumn
+    private Conta conta;
 }
