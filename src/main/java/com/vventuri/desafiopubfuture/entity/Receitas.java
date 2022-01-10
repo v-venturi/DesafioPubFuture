@@ -6,8 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,16 +20,19 @@ import java.time.LocalDateTime;
 public class Receitas {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int receitaId;
     private double valor;
-    private LocalDateTime dataRecebimento;
-    private LocalDateTime dataRecebimentoEsperado;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataRecebimento;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataRecebimentoEsperado;
     private String descricao;
-    @ManyToOne
-    @JoinColumn
-    private Conta conta;
     @Enumerated(EnumType.STRING)
     private TipoReceita tipoReceita;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "cod_conta_receita")
+    private Conta conta;
+
 
 }

@@ -1,12 +1,11 @@
 package com.vventuri.desafiopubfuture.entity;
 
 import com.vventuri.desafiopubfuture.entity.enums.TipoDespesa;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,14 +15,19 @@ import java.time.LocalDateTime;
 @Builder
 public class Despesas {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int despesaId;
     private double valor;
-    private LocalDateTime dataPagamento;
-    private LocalDateTime dataPagamentoEsperado;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataPagamento;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataPagamentoEsperado;
+    private String descricao;
     @Enumerated(EnumType.STRING)
     private TipoDespesa tipoDespesa;
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "cod_conta_despesa")
     private Conta conta;
+
+
 }
