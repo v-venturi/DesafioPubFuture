@@ -4,7 +4,6 @@ import com.vventuri.desafiopubfuture.entity.Conta;
 import com.vventuri.desafiopubfuture.repositories.ContaRepository;
 import com.vventuri.desafiopubfuture.services.ContaService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
