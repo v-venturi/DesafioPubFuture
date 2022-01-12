@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContaService {
     private final ContaRepository contaRepository;
-    double valorTransferido;
 
     public List<Conta> listarTodas() {
         return contaRepository.findAll();
