@@ -1,6 +1,7 @@
 package com.vventuri.desafiopubfuture.services;
 
 import com.vventuri.desafiopubfuture.entity.Conta;
+import com.vventuri.desafiopubfuture.exceptions.FundsNotAvaliableException;
 import com.vventuri.desafiopubfuture.repositories.ContaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,12 @@ public class ContaService {
         return contaRepository.save(conta);
     }
 
-    public void sacar(int conta, double valorTransferido) {
+    public void sacar(int conta, double valorTransferido) throws FundsNotAvaliableException {
         Conta conta1 = procurarConta(conta);
+        if (conta1.getSaldo() < valorTransferido) {
+            throw new FundsNotAvaliableException("Saldo em conta menor que o valor solicitado," +
+                    " valor disponível no momento: R$ " + conta1.getSaldo());
+        }
         conta1.setSaldo(conta1.getSaldo() - valorTransferido);
         contaRepository.save(conta1);
     }
@@ -39,6 +44,4 @@ public class ContaService {
         conta2.setSaldo(conta2.getSaldo() + valorTransferido);
         contaRepository.save(conta2);
     }
-
-
 }

@@ -1,6 +1,7 @@
 package com.vventuri.desafiopubfuture.controllers;
 
 import com.vventuri.desafiopubfuture.entity.Conta;
+import com.vventuri.desafiopubfuture.exceptions.FundsNotAvaliableException;
 import com.vventuri.desafiopubfuture.repositories.ContaRepository;
 import com.vventuri.desafiopubfuture.services.ContaService;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class ContaController {
         return ResponseEntity.ok(contaService.listarTodas());
 
     }
+
     @GetMapping(path = "/{codConta}")
     public ResponseEntity<Conta> listarPorConta(@PathVariable Integer codConta) {
         return ResponseEntity.ok(contaService.procurarConta(codConta));
@@ -46,7 +48,7 @@ public class ContaController {
 
     @DeleteMapping(path = "/{codConta}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletar(@PathVariable int codConta ) {
+    public void deletar(@PathVariable int codConta) {
         contaRepository.deleteById(codConta);
 
     }
@@ -54,11 +56,10 @@ public class ContaController {
     @PutMapping(path = "transferir/{contaOrigem}/{contaDestino}/{valorTransferido}")
     public ResponseEntity<Void> transferirSaldo(@PathVariable(value = "contaOrigem") Conta contaOrigem,
                                                 @PathVariable(value = "contaDestino") Conta contaDestino,
-                                                @PathVariable(value = "valorTransferido") Double valorTransferido) {
+                                                @PathVariable(value = "valorTransferido") Double valorTransferido)
+            throws FundsNotAvaliableException {
         contaService.sacar(contaOrigem.getCodConta(), valorTransferido);
         contaService.depositar(contaDestino.getCodConta(), valorTransferido);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
-
-
 }

@@ -13,8 +13,9 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "receitas")
 @Builder
+
 public class Receitas {
 
     @Id
@@ -31,7 +32,4 @@ public class Receitas {
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "cod_conta_receita")
     private Conta conta;
-
-
-
 }

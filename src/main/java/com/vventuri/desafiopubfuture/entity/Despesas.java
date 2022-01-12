@@ -31,12 +31,4 @@ public class Despesas {
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "cod_conta_despesa")
     private Conta conta;
-
-
-
-
-
-
-
-
 }

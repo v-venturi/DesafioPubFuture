@@ -23,36 +23,41 @@ public class DespesaController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Despesas> despesas(){
+    public List<Despesas> despesas() {
         return despesaRepository.findAll();
     }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Despesas cadastrar(@RequestBody Despesas despesas){
+    public Despesas cadastrar(@RequestBody Despesas despesas) {
         return despesaRepository.save(despesas);
     }
+
     @PutMapping(path = "/{codDespesa}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Despesas editar(@PathVariable int codDespesa, @RequestBody Despesas despesas)  {
+    public Despesas editar(@PathVariable int codDespesa, @RequestBody Despesas despesas) {
         Despesas despesa1 = despesaRepository.findById(codDespesa).get();
         despesas.setDespesaId(despesa1.getDespesaId());
         BeanUtils.copyProperties(despesas, despesa1, "codDespesa");
         return despesaRepository.saveAndFlush(despesa1);
     }
+
     @DeleteMapping(path = "/{codDespesa}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void deletarDespesa(@PathVariable int codDespesa){
+    public void deletarDespesa(@PathVariable int codDespesa) {
         despesaRepository.deleteById(codDespesa);
     }
+
     @GetMapping(path = "/{tipoDespesa}") // ignoreCase implantado via componente conversor de enum
-    public List<Despesas> listarDespesasPorTipo(@PathVariable TipoDespesa tipoDespesa){
+    @ResponseStatus(HttpStatus.OK)
+    public List<Despesas> listarDespesasPorTipo(@PathVariable TipoDespesa tipoDespesa) {
         return despesaRepository.findByTipoDespesa(tipoDespesa);
     }
 
     @GetMapping(path = "/buscarPorPeriodo")
     public ResponseEntity<List<Despesas>> listarPorPeriodo(@RequestParam Date dataInicial,
-                                                           @RequestParam Date dataFinal ){
-        return new  ResponseEntity<List<Despesas>>(despesaRepository
+                                                           @RequestParam Date dataFinal) {
+        return new ResponseEntity<List<Despesas>>(despesaRepository
                 .findBetweenDates(dataInicial, dataFinal), HttpStatus.OK);
 
     }
