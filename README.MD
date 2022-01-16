@@ -55,7 +55,7 @@ git clone https://github.com/v-venturi/DesafioPubFuture.git
 - You don't need to create the database, **Hibernate** create its following the Classes and relatioships.
 - Despite being developed with Java 17, you can run it on any Java 11+.
 
-* **Just remember to change the database password in main/java/resources/application.yml**
+* **Just remember to change the database password in src/main/resources/application.yml**
  
 
 * **Postman** collection link to test the API https://www.getpostman.com/collections/1a5f9d26fe3ed322ee5b
