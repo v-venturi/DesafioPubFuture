@@ -34,7 +34,7 @@ Incomes:
 * List total amount of incomes: `GET/http://localhost:8080/receitas/totalReceitas'
 * List incomes by period: `GET/http://localhost:8080/receitas/buscarPorPeriodo?dataInicial=yyyy-MM-dd&dataFinal=yyyy-MM-dd'
 
-### Details
+
 
 ### Technologies used
 

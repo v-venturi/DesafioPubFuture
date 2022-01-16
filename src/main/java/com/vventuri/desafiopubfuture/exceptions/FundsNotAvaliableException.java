@@ -1,6 +1,8 @@
 package com.vventuri.desafiopubfuture.exceptions;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.io.Serial;
 
@@ -8,7 +10,8 @@ import java.io.Serial;
  * The type Funds not avaliable exception.
  */
 @Component
-public class FundsNotAvaliableException extends Exception{
+@ControllerAdvice
+public class FundsNotAvaliableException extends Exception {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -24,6 +27,7 @@ public class FundsNotAvaliableException extends Exception{
      *
      * @param msg the msg
      */
+
     public FundsNotAvaliableException(String msg){
         super(msg);
 

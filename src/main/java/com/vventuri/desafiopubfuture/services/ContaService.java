@@ -4,10 +4,12 @@ import com.vventuri.desafiopubfuture.entity.Conta;
 import com.vventuri.desafiopubfuture.exceptions.FundsNotAvaliableException;
 import com.vventuri.desafiopubfuture.repositories.ContaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -16,7 +18,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ContaService {
+    @Autowired
     private final ContaRepository contaRepository;
+    DecimalFormat fmt = new DecimalFormat("#,##0.00");
 
     /**
      * Listar todas contas.
@@ -58,7 +62,8 @@ public class ContaService {
     public void sacar(int conta, double valorTransferido) throws FundsNotAvaliableException {
         Conta conta1 = procurarConta(conta);
         if (conta1.getSaldo() < valorTransferido) {
-            throw new FundsNotAvaliableException("Saldo em conta menor que o valor solicitado");
+            throw new FundsNotAvaliableException("Saldo em conta menor que o valor solicitado, saldo disponível" +
+                    " na conta: R$ " + fmt.format(conta1.getSaldo()));
 
         }else
         conta1.setSaldo(conta1.getSaldo() - valorTransferido);
