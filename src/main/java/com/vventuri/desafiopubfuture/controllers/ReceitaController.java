@@ -33,6 +33,7 @@ public class ReceitaController {
     private final ReceitaRepository receitaRepository;
     @Autowired
     private final ContaRepository contaRepository;
+    @Autowired
     private final ContaService contaService;
     /**
      * The Formatter.

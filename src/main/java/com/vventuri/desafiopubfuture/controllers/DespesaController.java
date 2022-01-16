@@ -31,6 +31,7 @@ public class DespesaController {
 
     @Autowired
     private final DespesaRepository despesaRepository;
+    @Autowired
     private final ContaService contaService;
     @Autowired
     private final ContaRepository contaRepository;
