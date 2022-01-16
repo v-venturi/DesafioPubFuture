@@ -46,8 +46,7 @@ public class DespesaController {
     public List<Despesas> despesas() {
         return despesaRepository.findAll();
     }
-
-    /**
+      /**
      * Cadastrar despesas.
      * Cada Despesa criada debita valor da conta releacionada — somente se a data de pagamento for igual ou anterior
      * a data atual e somente se houver saldo disponível, caso contrário lança exceção.

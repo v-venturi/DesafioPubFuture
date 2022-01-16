@@ -1,0 +1,560 @@
+{
+	"info": {
+		"_postman_id": "61cbbea8-208f-4671-922c-1053235467ca",
+		"name": "PubFuture- vventuri",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contas",
+			"item": [
+				{
+					"name": "Listar todas contas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "fields",
+								"value": "numbers",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/contas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Conta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \r\n        \"saldo\": 4000.0,\r\n        \"banco\": \"Itau\",\r\n        \"tipoConta\": \"CONTA_CORRENTE\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/contas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Saldos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "fields",
+								"value": "numbers",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/contas/totalContas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"totalContas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Conta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"saldo\": 4500,\r\n  \"banco\": \"Itau\",\r\n  \"tipoConta\": \"CONTA_CORRENTE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/contas/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar Conta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/contas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transferir Saldo -> / {origem}/{destino}/{valor}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/contas/transferir/1/4/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"transferir",
+								"1",
+								"4",
+								"25"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Despesas",
+			"item": [
+				{
+					"name": "Cadastrar Despesa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " \r\n    {\r\n        \r\n        \"valor\": 40,\r\n        \"dataPagamento\": \"12-01-2022\",\r\n        \"dataPagamentoEsperado\": \"12-01-2022\",\r\n        \"descricao\": \"multa\",\r\n        \"tipoDespesa\": \"OUTROS\",\r\n        \"conta\": {\r\n            \"codConta\": 1\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/despesas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar despesas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/despesas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar despesa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n       \r\n        \"valor\": 455.0,\r\n        \"dataPagamento\": null,\r\n        \"dataPagamentoEsperado\": null,\r\n        \"descricao\": \"Mercado\",\r\n        \"tipoDespesa\": \"ALIMENTACAO\",\r\n        \"conta\": {\r\n            \"codConta\": 6\r\n        \r\n        }\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/despesas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar despesa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n        \r\n        \"valor\": 1300.0,\r\n        \"dataPagamento\": \"\",\r\n        \"dataPagamentoEsperado\": \"\",\r\n        \"descricao\": \"aluguel\",\r\n        \"tipoDespesa\": \"MORADIA\",\r\n        \"conta\": {\r\n            \"codConta\": 5\r\n           \r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/despesas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar despesas por período",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/despesas/buscarPorPeriodo?dataInicial=2021-01-01&dataFinal=2022-02-28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"buscarPorPeriodo"
+							],
+							"query": [
+								{
+									"key": "dataInicial",
+									"value": "2021-01-01"
+								},
+								{
+									"key": "dataFinal",
+									"value": "2022-02-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por tipo de despesa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/despesas/alimentacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"alimentacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Total de despesas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/despesas/totalDespesas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesas",
+								"totalDespesas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Receitas",
+			"item": [
+				{
+					"name": "Cadastrar Receita",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \r\n        \"valor\": 300,\r\n        \"dataRecebimento\": \"23-01-2021\",\r\n        \"dataRecebimentoEsperado\": \"23-01-2021\",\r\n        \"descricao\": \"gratificacao\",\r\n        \"tipoReceita\": \"PREMIO\",\r\n        \"conta\": {\r\n            \"codConta\": 2\r\n           \r\n        }\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/receitas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar receita",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n        \r\n        \"valor\": 1300.0,\r\n        \"dataPagamento\": \"\",\r\n        \"dataPagamentoEsperado\": \"\",\r\n        \"descricao\": \"aluguel\",\r\n        \"tipoDespesa\": \"MORADIA\",\r\n        \"conta\": {\r\n            \"codConta\": 5\r\n           \r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/receitas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Receitas por período",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas/buscarPorPeriodo?dataInicial=2021-01-01&dataFinal=2022-02-28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"buscarPorPeriodo"
+							],
+							"query": [
+								{
+									"key": "dataInicial",
+									"value": "2021-01-01"
+								},
+								{
+									"key": "dataFinal",
+									"value": "2022-02-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar receitas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por tipo de receita",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas/salario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"salario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar receita",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " \r\n    {\r\n        \r\n        \"valor\": 1400,\r\n        \"dataRecebimento\": \"\",\r\n        \"dataRecebimentoEsperado\": \"19-01-2021\",\r\n        \"descricao\": \"vale fevereiro\",\r\n        \"tipoReceita\": \"SALARIO\",\r\n        \"conta\": {\r\n            \"codConta\": 1\r\n           \r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/receitas/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Total de receitas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/receitas/totalReceitas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receitas",
+								"totalReceitas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
