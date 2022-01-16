@@ -58,7 +58,8 @@ git clone https://github.com/v-venturi/DesafioPubFuture.git
 * **Just remember to change the database password in src/main/resources/application.yml**
  
 
-* **Postman** collection link to test the API https://www.getpostman.com/collections/1a5f9d26fe3ed322ee5b
+* **Postman** collection link to test the API 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1a5f9d26fe3ed322ee5b?action=collection%2Fimport)
 
 
 
