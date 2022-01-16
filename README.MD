@@ -43,6 +43,7 @@ This project was developed with:
 * **Java 17 LTS - 2021-09-14**
 * **Spring Boot 2.6.2**
 * **Spring DATA-JPA 2.6.2**
+* **Spring Fox 3.0.0**
 * **Maven**
 * **MySQL 8.0.25**
 * **Lombok**
@@ -56,7 +57,11 @@ git clone https://github.com/v-venturi/DesafioPubFuture.git
 - Despite being developed with Java 17, you can run it on any Java 11+.
 
 * **Just remember to change the database password in src/main/resources/application.yml**
- 
+
+
+### Documentation
+
+* **Swagger** http://localhost:8080/swagger-ui/
 
 * **Postman** collection link to test the API 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1a5f9d26fe3ed322ee5b?action=collection%2Fimport)

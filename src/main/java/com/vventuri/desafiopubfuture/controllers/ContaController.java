@@ -108,13 +108,9 @@ public class ContaController {
     /**
      * Listar totais conta list.
      *
-     * @param saldo              the saldo
      * @param saldoTotal         the saldo total
-     * @param saldoPoupanca      the saldo poupanca
      * @param totalPoupanca      the total poupanca
-     * @param saldoContaCorrente the saldo conta corrente
      * @param totalContaCorrente the total conta corrente
-     * @param saldoCarteira      the saldo carteira
      * @param totalCarteira      the total carteira
      * @return the list
      */

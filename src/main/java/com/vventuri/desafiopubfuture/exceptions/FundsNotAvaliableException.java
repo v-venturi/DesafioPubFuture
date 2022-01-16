@@ -2,7 +2,6 @@ package com.vventuri.desafiopubfuture.exceptions;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.io.Serial;
 
