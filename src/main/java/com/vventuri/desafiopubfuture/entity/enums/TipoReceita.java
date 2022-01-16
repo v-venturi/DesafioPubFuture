@@ -1,6 +1,9 @@
 package com.vventuri.desafiopubfuture.entity.enums;
 
-    public enum TipoReceita {
+/**
+ * The enum Tipo receita.
+ */
+public enum TipoReceita {
     SALARIO("Salário"),
     PRESENTE("Presente"),
     PREMIO("Prêmio"),

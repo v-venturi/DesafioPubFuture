@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Date;
 
+/**
+ * The type Receitas.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

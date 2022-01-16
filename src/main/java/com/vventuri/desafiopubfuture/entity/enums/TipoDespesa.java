@@ -1,5 +1,8 @@
 package com.vventuri.desafiopubfuture.entity.enums;
 
+/**
+ * The enum Tipo despesa.
+ */
 public enum TipoDespesa {
     ALIMENTACAO("Alimentação"),
     EDUCACAO("Educação"),

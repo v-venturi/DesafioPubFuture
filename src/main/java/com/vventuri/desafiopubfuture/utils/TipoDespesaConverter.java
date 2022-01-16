@@ -4,7 +4,10 @@ import com.vventuri.desafiopubfuture.entity.enums.TipoDespesa;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-    @Component
+/**
+ * The type Tipo despesa converter.
+ */
+@Component
     public class TipoDespesaConverter implements Converter<String, TipoDespesa> {
 
     @Override

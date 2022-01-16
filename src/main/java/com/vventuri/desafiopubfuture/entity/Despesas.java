@@ -11,6 +11,9 @@ import javax.persistence.*;
 import java.sql.Date;
 
 
+/**
+ * The type Despesas.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
